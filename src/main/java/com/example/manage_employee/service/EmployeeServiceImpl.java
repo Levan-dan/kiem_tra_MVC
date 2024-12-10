@@ -8,9 +8,20 @@ import java.util.List;
 import java.util.Map;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    private final Map<Integer, Employee> employees = new HashMap<>();
+    private static Map<Integer, Employee> employees;
+
+    static {
+        employees = new HashMap<>();
+    }
+
+
     @Override
     public List<Employee> findAll() {
         return new ArrayList<>(employees.values());
+    }
+
+    @Override
+    public void save(Employee employee) {
+        employees.put(employee.getMaNhanVien(), employee);
     }
 }
